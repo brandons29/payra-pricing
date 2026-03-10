@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payra Pricing | $0 to Get Started &mdash; Get Paid Faster</title>
-  <meta name="description" content="Payra costs nothing to install, set up, or manage. Automate invoice-to-cash from inside your ERP. Construction & distribution companies reduce DSO by 40%." />
+  <meta name="description" content="Payra costs nothing to install, set up, or manage. Automate invoice-to-cash from inside your ERP. Construction &amp; distribution companies reduce DSO by 40%." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,16 @@
             payra: {
               cyan: '#2cc5e7',
               cyanDark: '#1ba8c7',
+              cyanLight: '#e8f9fd',
               green: '#22b672',
               greenDark: '#1a9a5f',
-              dark: '#0f172a',
+              greenLight: '#ecfdf3',
+              dark: '#1e293b',
+              darker: '#0f172a',
               gray: '#64748b',
+              muted: '#94a3b8',
               lightGray: '#f8fafc',
+              warm: '#fafaf9',
             }
           },
           fontFamily: {
@@ -36,31 +41,31 @@
     html { scroll-behavior: smooth; }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes countUp {
-      from { opacity: 0; transform: scale(0.8); }
+      from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
     @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-40px); }
+      from { opacity: 0; transform: translateX(-30px); }
       to { opacity: 1; transform: translateX(0); }
     }
     @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(40px); }
+      from { opacity: 0; transform: translateX(30px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(44, 197, 231, 0.4); }
-      50% { box-shadow: 0 0 0 12px rgba(44, 197, 231, 0); }
+    @keyframes gentle-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(44, 197, 231, 0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(44, 197, 231, 0); }
     }
 
-    .animate-fadeInUp { animation: fadeInUp 0.7s ease-out forwards; }
+    .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
     .animate-countUp { animation: countUp 0.5s ease-out forwards; }
-    .animate-slideInLeft { animation: slideInLeft 0.7s ease-out forwards; }
-    .animate-slideInRight { animation: slideInRight 0.7s ease-out forwards; }
-    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-slideInLeft { animation: slideInLeft 0.6s ease-out forwards; }
+    .animate-slideInRight { animation: slideInRight 0.6s ease-out forwards; }
+    .animate-gentle-pulse { animation: gentle-pulse 2.5s ease-in-out infinite; }
 
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
@@ -71,43 +76,31 @@
     .observe-animate { opacity: 0; }
     .observed { opacity: 1; }
 
-    .cost-strike { position: relative; }
-    .cost-strike::after {
-      content: '';
-      position: absolute;
-      left: -4px;
-      right: -4px;
-      top: 50%;
-      height: 3px;
-      background: #ef4444;
-      transform: rotate(-5deg);
-    }
-
-    .comparison-card {
-      transition: all 0.3s ease;
-    }
-    .comparison-card:hover {
-      transform: translateY(-2px);
-    }
-
     .cta-button {
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
     .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px -8px rgba(44, 197, 231, 0.35);
+    }
+    .cta-secondary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 25px -5px rgba(44, 197, 231, 0.4);
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.1);
     }
 
     .faq-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
+      transition: max-height 0.35s ease-out, padding 0.35s ease-out;
+      padding-top: 0;
+      padding-bottom: 0;
     }
     .faq-content.open {
       max-height: 300px;
+      padding-top: 0;
+      padding-bottom: 1.25rem;
     }
 
-    /* Sticky CTA bar */
     .sticky-cta {
       transform: translateY(100%);
       transition: transform 0.3s ease;
@@ -115,14 +108,43 @@
     .sticky-cta.visible {
       transform: translateY(0);
     }
+
+    /* Comparison row styling */
+    .compare-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .compare-row + .compare-row {
+      border-top: 1px solid #f1f5f9;
+    }
+
+    /* Card hover */
+    .feature-card {
+      transition: all 0.25s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
+      border-color: rgba(44, 197, 231, 0.3);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #2cc5e7 0%, #22b672 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
   </style>
 </head>
 <body class="bg-white text-payra-dark antialiased">
 
   <!-- Sticky Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100/80">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="https://www.payra.com" class="flex items-center gap-2">
+      <a href="https://www.payra.com" class="flex items-center gap-2.5">
         <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
           <path d="M8 12L20 6L32 12V20L20 34L8 20V12Z" fill="#22b672"/>
           <path d="M14 16L22 12L28 16V20L18 28L14 24V16Z" fill="white"/>
@@ -145,193 +167,215 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
-    <!-- Subtle gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30"></div>
+  <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-white to-white"></div>
+    <!-- Decorative circles -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-payra-cyanLight rounded-full blur-3xl opacity-40"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-payra-greenLight rounded-full blur-3xl opacity-30"></div>
 
     <div class="relative max-w-6xl mx-auto px-6">
       <div class="max-w-3xl mx-auto text-center">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 border border-green-200 rounded-full mb-8 animate-fadeInUp">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-payra-greenLight border border-green-200/60 rounded-full mb-10 animate-fadeInUp">
           <span class="w-2 h-2 bg-payra-green rounded-full animate-pulse"></span>
           <span class="text-sm font-medium text-payra-greenDark">$0 install &middot; $0 setup &middot; $0 management</span>
         </div>
 
         <!-- Headline -->
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6 animate-fadeInUp delay-100">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] mb-8 animate-fadeInUp delay-100">
           Get paid faster.<br/>
-          <span class="text-payra-cyan">Pay nothing</span> for it.
+          <span class="gradient-text">Pay nothing</span> for it.
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-lg md:text-xl text-payra-gray max-w-2xl mx-auto mb-10 animate-fadeInUp delay-200 leading-relaxed">
+        <p class="text-lg md:text-xl text-payra-gray max-w-2xl mx-auto mb-12 animate-fadeInUp delay-200 leading-relaxed">
           Payra automates invoice-to-cash from inside your ERP. No license fees. No setup costs. No monthly bills. We only succeed when you get paid.
         </p>
 
         <!-- CTA Group -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeInUp delay-300">
-          <a href="https://book.payra.com" class="cta-button animate-pulse-glow inline-flex items-center gap-2 px-8 py-4 bg-payra-cyan text-white text-base font-bold rounded-xl shadow-lg shadow-cyan-200/50">
-            Book a Demo &mdash; It's Free
+          <a href="https://book.payra.com" class="cta-button animate-gentle-pulse inline-flex items-center gap-2.5 px-8 py-4 bg-payra-cyan text-white text-base font-bold rounded-xl shadow-lg shadow-cyan-200/40">
+            Book a Demo &mdash; It&rsquo;s Free
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="https://calculator.payra.com" class="inline-flex items-center gap-2 px-6 py-4 bg-white text-payra-dark text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-payra-cyan transition-colors">
+          <a href="https://calculator.payra.com" class="cta-secondary inline-flex items-center gap-2 px-7 py-4 bg-white text-payra-dark text-base font-semibold rounded-xl border border-gray-200 hover:border-payra-cyan/50 transition-colors">
             Try the AR Calculator
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-4 h-4 text-payra-gray" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
 
         <!-- Trust signals -->
-        <div class="flex flex-wrap items-center justify-center gap-6 mt-12 animate-fadeInUp delay-400" data-animate="fadeInUp">
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-14 animate-fadeInUp delay-400">
+          <div class="flex items-center gap-2 text-sm text-payra-muted">
+            <svg class="w-4 h-4 text-payra-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            SOC 2 Compliant
+          </div>
+          <div class="flex items-center gap-2 text-sm text-payra-muted">
+            <svg class="w-4 h-4 text-payra-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            PCI DSS Certified
+          </div>
+          <div class="flex items-center gap-2 text-sm text-payra-muted">
+            <svg class="w-4 h-4 text-payra-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Live in 2&ndash;4 weeks
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Pricing Section -->
+  <section class="py-24 bg-payra-darker text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">Pricing that makes sense</p>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4">Stop paying for software<br/>that should pay for itself.</h2>
-        <p class="text-lg text-slate-400 max-w-2xl mx-auto">Other AR platforms charge you license fees, implementation costs, and monthly minimums &mdash; before you see a single dollar collected faster.</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-5">Stop paying for software<br/>that should pay for itself.</h2>
+        <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">Other AR platforms charge license fees, implementation costs, and monthly minimums &mdash; before you see a single dollar collected faster.</p>
       </div>
 
-      <!-- Comparison -->
-      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <!-- Them -->
-        <div class="comparison-card bg-slate-800/50 border border-slate-700 rounded-2xl p-8 observe-animate" data-animate="slideInLeft">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      <!-- Comparison Cards -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Traditional -->
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8 observe-animate" data-animate="slideInLeft">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 bg-slate-700/60 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
             </div>
-            <span class="text-lg font-bold text-slate-300">Traditional AR Software</span>
+            <span class="text-lg font-semibold text-slate-300">Traditional AR Software</span>
           </div>
-          <div class="space-y-4">
-            <div class="flex items-center justify-between py-3 border-b border-slate-700/50">
-              <span class="text-slate-400">Implementation</span>
-              <span class="text-red-400 font-bold">$25,000 &ndash; $100,000+</span>
+          <div>
+            <div class="compare-row" style="border-top: none;">
+              <span class="text-slate-400 text-sm">Implementation</span>
+              <span class="text-slate-300 font-semibold">$25,000 &ndash; $100,000+</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-slate-700/50">
-              <span class="text-slate-400">Monthly license</span>
-              <span class="text-red-400 font-bold">$2,000 &ndash; $10,000/mo</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(148,163,184,0.12);">
+              <span class="text-slate-400 text-sm">Monthly license</span>
+              <span class="text-slate-300 font-semibold">$2,000 &ndash; $10,000/mo</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-slate-700/50">
-              <span class="text-slate-400">Training & onboarding</span>
-              <span class="text-red-400 font-bold">$5,000 &ndash; $15,000</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(148,163,184,0.12);">
+              <span class="text-slate-400 text-sm">Training &amp; onboarding</span>
+              <span class="text-slate-300 font-semibold">$5,000 &ndash; $15,000</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-slate-700/50">
-              <span class="text-slate-400">Ongoing support</span>
-              <span class="text-red-400 font-bold">Extra $$$</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(148,163,184,0.12);">
+              <span class="text-slate-400 text-sm">Ongoing support</span>
+              <span class="text-slate-300 font-semibold">Extra $$$</span>
             </div>
-            <div class="flex items-center justify-between py-3">
-              <span class="text-slate-400">Time to value</span>
-              <span class="text-red-400 font-bold">3&ndash;6 months</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(148,163,184,0.12);">
+              <span class="text-slate-400 text-sm">Time to value</span>
+              <span class="text-slate-300 font-semibold">3&ndash;6 months</span>
             </div>
           </div>
         </div>
 
         <!-- Payra -->
-        <div class="comparison-card relative bg-gradient-to-br from-payra-cyan/10 to-payra-green/10 border-2 border-payra-cyan rounded-2xl p-8 observe-animate" data-animate="slideInRight">
-          <!-- Recommended badge -->
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-payra-cyan text-white text-xs font-bold rounded-full uppercase tracking-wider">Recommended</div>
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-payra-cyan/20 rounded-lg flex items-center justify-center">
+        <div class="relative bg-gradient-to-br from-payra-cyan/[0.08] to-payra-green/[0.06] border-2 border-payra-cyan/60 rounded-2xl p-8 observe-animate" data-animate="slideInRight">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-payra-cyan text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg shadow-cyan-500/20">Recommended</div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 bg-payra-cyan/15 rounded-xl flex items-center justify-center">
               <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
             </div>
-            <span class="text-lg font-bold text-white">Payra</span>
+            <span class="text-lg font-semibold text-white">Payra</span>
           </div>
-          <div class="space-y-4">
-            <div class="flex items-center justify-between py-3 border-b border-white/10">
-              <span class="text-slate-300">Implementation</span>
-              <span class="text-payra-cyan font-black text-lg">$0</span>
+          <div>
+            <div class="compare-row" style="border-top: none;">
+              <span class="text-slate-300 text-sm">Implementation</span>
+              <span class="text-payra-cyan font-bold text-xl">$0</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-white/10">
-              <span class="text-slate-300">Monthly license</span>
-              <span class="text-payra-cyan font-black text-lg">$0</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(255,255,255,0.08);">
+              <span class="text-slate-300 text-sm">Monthly license</span>
+              <span class="text-payra-cyan font-bold text-xl">$0</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-white/10">
-              <span class="text-slate-300">Training & onboarding</span>
-              <span class="text-payra-cyan font-black text-lg">$0</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(255,255,255,0.08);">
+              <span class="text-slate-300 text-sm">Training &amp; onboarding</span>
+              <span class="text-payra-cyan font-bold text-xl">$0</span>
             </div>
-            <div class="flex items-center justify-between py-3 border-b border-white/10">
-              <span class="text-slate-300">Ongoing support</span>
-              <span class="text-payra-cyan font-black text-lg">$0</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(255,255,255,0.08);">
+              <span class="text-slate-300 text-sm">Ongoing support</span>
+              <span class="text-payra-cyan font-bold text-xl">$0</span>
             </div>
-            <div class="flex items-center justify-between py-3">
-              <span class="text-slate-300">Time to value</span>
-              <span class="text-payra-green font-black text-lg">2&ndash;4 weeks</span>
+            <div class="compare-row" style="border-top: 1px solid rgba(255,255,255,0.08);">
+              <span class="text-slate-300 text-sm">Time to value</span>
+              <span class="text-payra-green font-bold text-xl">2&ndash;4 weeks</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Aligned incentives callout -->
-      <div class="max-w-3xl mx-auto mt-12 text-center observe-animate" data-animate="fadeInUp">
-        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8">
-          <p class="text-2xl md:text-3xl font-black mb-3">We make money when <span class="text-payra-cyan">you</span> get paid.</p>
-          <p class="text-slate-400 text-lg">That's it. Our incentives are 100% aligned with yours. We only earn on the transaction &mdash; which means we're invested in getting you paid faster, every single day.</p>
+      <div class="max-w-3xl mx-auto mt-14 text-center observe-animate" data-animate="fadeInUp">
+        <div class="bg-gradient-to-r from-payra-cyan/[0.06] to-payra-green/[0.06] border border-slate-700/40 rounded-2xl p-10">
+          <p class="text-2xl md:text-3xl font-bold mb-4 leading-snug">We make money when <span class="text-payra-cyan">you</span> get paid.</p>
+          <p class="text-slate-400 text-base leading-relaxed max-w-xl mx-auto">That&rsquo;s it. Our incentives are 100% aligned with yours. We only earn on the transaction &mdash; which means we&rsquo;re invested in getting you paid faster, every single day.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Stats Section -->
-  <section id="results" class="py-20 bg-white">
+  <section id="results" class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">Proven results</p>
         <h2 class="text-3xl md:text-5xl font-black tracking-tight">The outcomes speak for themselves.</h2>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="text-center p-8 bg-slate-50 rounded-2xl border border-slate-100 observe-animate" data-animate="countUp">
-          <div class="text-4xl md:text-5xl font-black text-payra-cyan mb-2">40%</div>
-          <p class="text-payra-gray font-medium">Reduction in DSO</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="text-center p-8 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-100 observe-animate" data-animate="countUp">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-3">40%</div>
+          <p class="text-payra-gray font-medium text-sm">Reduction in DSO</p>
         </div>
-        <div class="text-center p-8 bg-slate-50 rounded-2xl border border-slate-100 observe-animate delay-100" data-animate="countUp">
-          <div class="text-4xl md:text-5xl font-black text-payra-cyan mb-2">85%</div>
-          <p class="text-payra-gray font-medium">Same-day payments</p>
+        <div class="text-center p-8 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-100 observe-animate delay-100" data-animate="countUp">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-3">85%</div>
+          <p class="text-payra-gray font-medium text-sm">Same-day payments</p>
         </div>
-        <div class="text-center p-8 bg-slate-50 rounded-2xl border border-slate-100 observe-animate delay-200" data-animate="countUp">
-          <div class="text-4xl md:text-5xl font-black text-payra-cyan mb-2">10h+</div>
-          <p class="text-payra-gray font-medium">Saved per week</p>
+        <div class="text-center p-8 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-100 observe-animate delay-200" data-animate="countUp">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-3">10h+</div>
+          <p class="text-payra-gray font-medium text-sm">Saved per week</p>
         </div>
-        <div class="text-center p-8 bg-slate-50 rounded-2xl border border-slate-100 observe-animate delay-300" data-animate="countUp">
-          <div class="text-4xl md:text-5xl font-black text-payra-green mb-2">$0</div>
-          <p class="text-payra-gray font-medium">Setup fees</p>
+        <div class="text-center p-8 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-100 observe-animate delay-300" data-animate="countUp">
+          <div class="text-4xl md:text-5xl font-black text-payra-green mb-3">$0</div>
+          <p class="text-payra-gray font-medium text-sm">Setup fees</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- How It Works -->
-  <section id="how-it-works" class="py-20 bg-slate-50">
+  <section id="how-it-works" class="py-24 bg-slate-50/70">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">How it works</p>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4">From signed contract to live<br/>in under a month.</h2>
-        <p class="text-lg text-payra-gray max-w-2xl mx-auto">We handle everything. Your team keeps doing what they do best.</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-5">From signed contract to live<br/>in under a month.</h2>
+        <p class="text-lg text-payra-gray max-w-2xl mx-auto leading-relaxed">We handle everything. Your team keeps doing what they do best.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="relative observe-animate" data-animate="fadeInUp">
-          <div class="bg-white rounded-2xl p-8 border border-slate-200 h-full">
-            <div class="w-12 h-12 bg-payra-cyan/10 rounded-xl flex items-center justify-center mb-5">
+        <div class="observe-animate" data-animate="fadeInUp">
+          <div class="bg-white rounded-2xl p-8 border border-slate-200/80 h-full shadow-sm">
+            <div class="w-12 h-12 bg-payra-cyanLight rounded-xl flex items-center justify-center mb-6">
               <span class="text-payra-cyan font-black text-xl">1</span>
             </div>
             <h3 class="text-xl font-bold mb-3">We connect to your ERP</h3>
-            <p class="text-payra-gray leading-relaxed">Native integration with Epicor, NetSuite, Acumatica, Sage, Vista, Dynamics, and more. Maps to your chart of accounts automatically.</p>
+            <p class="text-payra-gray leading-relaxed text-[15px]">Native integration with Epicor, NetSuite, Acumatica, Sage, Vista, Dynamics, and more. Maps to your chart of accounts automatically.</p>
           </div>
         </div>
 
-        <div class="relative observe-animate delay-100" data-animate="fadeInUp">
-          <div class="bg-white rounded-2xl p-8 border border-slate-200 h-full">
-            <div class="w-12 h-12 bg-payra-cyan/10 rounded-xl flex items-center justify-center mb-5">
+        <div class="observe-animate delay-100" data-animate="fadeInUp">
+          <div class="bg-white rounded-2xl p-8 border border-slate-200/80 h-full shadow-sm">
+            <div class="w-12 h-12 bg-payra-cyanLight rounded-xl flex items-center justify-center mb-6">
               <span class="text-payra-cyan font-black text-xl">2</span>
             </div>
             <h3 class="text-xl font-bold mb-3">Automation kicks in</h3>
-            <p class="text-payra-gray leading-relaxed">Invoicing, collections, payment processing, and cash application run on autopilot. Your customers get a branded self-service portal.</p>
+            <p class="text-payra-gray leading-relaxed text-[15px]">Invoicing, collections, payment processing, and cash application run on autopilot. Your customers get a branded self-service portal.</p>
           </div>
         </div>
 
-        <div class="relative observe-animate delay-200" data-animate="fadeInUp">
-          <div class="bg-white rounded-2xl p-8 border border-slate-200 h-full">
-            <div class="w-12 h-12 bg-payra-green/10 rounded-xl flex items-center justify-center mb-5">
+        <div class="observe-animate delay-200" data-animate="fadeInUp">
+          <div class="bg-white rounded-2xl p-8 border border-slate-200/80 h-full shadow-sm">
+            <div class="w-12 h-12 bg-payra-greenLight rounded-xl flex items-center justify-center mb-6">
               <span class="text-payra-green font-black text-xl">3</span>
             </div>
             <h3 class="text-xl font-bold mb-3">Cash hits your account</h3>
-            <p class="text-payra-gray leading-relaxed">Payments post back to your general ledger in real time. No reconciliation gaps. No imports. DSO drops within weeks.</p>
+            <p class="text-payra-gray leading-relaxed text-[15px]">Payments post back to your general ledger in real time. No reconciliation gaps. No imports. DSO drops within weeks.</p>
           </div>
         </div>
       </div>
@@ -339,92 +383,92 @@
   </section>
 
   <!-- What You Get (features) -->
-  <section class="py-20 bg-white">
+  <section class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">Everything included</p>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4">All of this. Zero cost to you.</h2>
-        <p class="text-lg text-payra-gray max-w-2xl mx-auto">Every feature, fully managed. No tiers, no upsells, no hidden fees.</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-5">All of this. Zero cost to you.</h2>
+        <p class="text-lg text-payra-gray max-w-2xl mx-auto leading-relaxed">Every feature, fully managed. No tiers, no upsells, no hidden fees.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-cyanLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-2">Automated Invoicing</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Generate, send, and track invoices automatically. No manual data entry or email follow-ups.</p>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Generate, send, and track invoices automatically. No manual data entry or email follow-ups.</p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate delay-100" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate delay-100" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-cyanLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-2">Smart Collections</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Automated payment reminders with escalation rules. Customers pay through a branded portal.</p>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Automated payment reminders with escalation rules. Customers pay through a branded portal.</p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate delay-200" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate delay-200" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-cyanLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-cyan" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-2">Payment Processing</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Accept ACH, credit card, and check payments. Funds deposited directly to your bank account.</p>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Accept ACH, credit card, and check payments. Funds deposited directly to your bank account.</p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-greenLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-2">Cash Application</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Payments matched and posted to your ERP general ledger in real time. Zero manual reconciliation.</p>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Payments matched and posted to your ERP general ledger in real time. Zero manual reconciliation.</p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate delay-100" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate delay-100" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-greenLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-2">Real-Time Analytics</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Track DSO, aging buckets, cash flow forecasts, and collection performance at a glance.</p>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Track DSO, aging buckets, cash flow forecasts, and collection performance at a glance.</p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-slate-200 hover:border-payra-cyan/40 transition-colors observe-animate delay-200" data-animate="fadeInUp">
-          <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        <div class="feature-card p-7 rounded-2xl border border-slate-200/80 bg-white observe-animate delay-200" data-animate="fadeInUp">
+          <div class="w-10 h-10 bg-payra-greenLight rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-payra-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">Audit & Compliance</h3>
-          <p class="text-payra-gray text-sm leading-relaxed">Complete audit trail for every transaction. SOC 2 and PCI DSS compliant out of the box.</p>
+          <h3 class="text-lg font-bold mb-2">Audit &amp; Compliance</h3>
+          <p class="text-payra-gray text-[15px] leading-relaxed">Complete audit trail for every transaction. SOC 2 and PCI DSS compliant out of the box.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ERP Integrations -->
-  <section class="py-20 bg-slate-50">
+  <section class="py-24 bg-slate-50/70">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">Native Integrations</p>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4">Works with your ERP. Day one.</h2>
-        <p class="text-lg text-payra-gray max-w-2xl mx-auto">We map directly to your chart of accounts and post transactions in real time. No imports. No reconciliation gaps.</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-5">Works with your ERP. Day one.</h2>
+        <p class="text-lg text-payra-gray max-w-2xl mx-auto leading-relaxed">We map directly to your chart of accounts and post transactions in real time. No imports. No reconciliation gaps.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate" data-animate="fadeInUp">
           <p class="font-bold text-lg">Epicor P21</p>
         </div>
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate delay-100" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate delay-100" data-animate="fadeInUp">
           <p class="font-bold text-lg">NetSuite</p>
         </div>
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate delay-200" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate delay-200" data-animate="fadeInUp">
           <p class="font-bold text-lg">Acumatica</p>
         </div>
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate delay-100" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate delay-100" data-animate="fadeInUp">
           <p class="font-bold text-lg">Sage Intacct</p>
         </div>
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate delay-200" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate delay-200" data-animate="fadeInUp">
           <p class="font-bold text-lg">Vista Viewpoint</p>
         </div>
-        <div class="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-payra-cyan/40 transition-colors observe-animate delay-300" data-animate="fadeInUp">
+        <div class="bg-white rounded-xl p-6 border border-slate-200/80 text-center hover:border-payra-cyan/30 transition-all hover:shadow-sm observe-animate delay-300" data-animate="fadeInUp">
           <p class="font-bold text-lg">MS Dynamics</p>
         </div>
       </div>
@@ -432,61 +476,61 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-white">
+  <section id="faq" class="py-24 bg-white">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-16 observe-animate" data-animate="fadeInUp">
         <p class="text-payra-cyan font-semibold text-sm tracking-widest uppercase mb-4">FAQ</p>
         <h2 class="text-3xl md:text-5xl font-black tracking-tight">Common questions</h2>
       </div>
 
-      <div class="space-y-4">
-        <div class="border border-slate-200 rounded-xl overflow-hidden observe-animate" data-animate="fadeInUp">
-          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-lg hover:bg-slate-50 transition-colors">
+      <div class="space-y-3">
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden observe-animate" data-animate="fadeInUp">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-[17px] hover:bg-slate-50/50 transition-colors">
             <span>How is Payra actually free?</span>
-            <svg class="w-5 h-5 text-payra-gray transition-transform faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="w-5 h-5 text-payra-muted transition-transform duration-300 faq-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="faq-content px-6 pb-5">
+          <div class="faq-content px-6">
             <p class="text-payra-gray leading-relaxed">There are zero costs to install, set up, or manage Payra. We earn a small fee on each transaction processed through the platform. This means our incentives are fully aligned with yours &mdash; we only succeed when you get paid faster.</p>
           </div>
         </div>
 
-        <div class="border border-slate-200 rounded-xl overflow-hidden observe-animate delay-100" data-animate="fadeInUp">
-          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-lg hover:bg-slate-50 transition-colors">
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden observe-animate delay-100" data-animate="fadeInUp">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-[17px] hover:bg-slate-50/50 transition-colors">
             <span>How long does implementation take?</span>
-            <svg class="w-5 h-5 text-payra-gray transition-transform faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="w-5 h-5 text-payra-muted transition-transform duration-300 faq-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="faq-content px-6 pb-5">
+          <div class="faq-content px-6">
             <p class="text-payra-gray leading-relaxed">Most companies are fully live within 2&ndash;4 weeks. Our team handles the ERP integration, data migration, and training so your team can focus on running the business.</p>
           </div>
         </div>
 
-        <div class="border border-slate-200 rounded-xl overflow-hidden observe-animate delay-200" data-animate="fadeInUp">
-          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-lg hover:bg-slate-50 transition-colors">
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden observe-animate delay-200" data-animate="fadeInUp">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-[17px] hover:bg-slate-50/50 transition-colors">
             <span>Does Payra work with my ERP?</span>
-            <svg class="w-5 h-5 text-payra-gray transition-transform faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="w-5 h-5 text-payra-muted transition-transform duration-300 faq-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="faq-content px-6 pb-5">
+          <div class="faq-content px-6">
             <p class="text-payra-gray leading-relaxed">Yes. Payra integrates natively with leading construction and distribution ERPs including Epicor P21, NetSuite, Acumatica, Sage Intacct, Vista Viewpoint, Microsoft Dynamics, and more. We map to your chart of accounts and post transactions to the general ledger in real time.</p>
           </div>
         </div>
 
-        <div class="border border-slate-200 rounded-xl overflow-hidden observe-animate delay-300" data-animate="fadeInUp">
-          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-lg hover:bg-slate-50 transition-colors">
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden observe-animate delay-300" data-animate="fadeInUp">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-[17px] hover:bg-slate-50/50 transition-colors">
             <span>What payment methods can my customers use?</span>
-            <svg class="w-5 h-5 text-payra-gray transition-transform faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="w-5 h-5 text-payra-muted transition-transform duration-300 faq-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="faq-content px-6 pb-5">
+          <div class="faq-content px-6">
             <p class="text-payra-gray leading-relaxed">Your customers can pay via ACH, credit card, or check through a white-labeled self-service portal. They can view statements, manage lien waivers, and store payment methods on file &mdash; reducing friction and getting you paid faster.</p>
           </div>
         </div>
 
-        <div class="border border-slate-200 rounded-xl overflow-hidden observe-animate delay-400" data-animate="fadeInUp">
-          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-lg hover:bg-slate-50 transition-colors">
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden observe-animate delay-400" data-animate="fadeInUp">
+          <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between font-semibold text-[17px] hover:bg-slate-50/50 transition-colors">
             <span>Is there a contract or commitment?</span>
-            <svg class="w-5 h-5 text-payra-gray transition-transform faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="w-5 h-5 text-payra-muted transition-transform duration-300 faq-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-payra-gray leading-relaxed">We keep it simple. There are no long-term contracts or early termination fees. We earn your business every month by helping you collect faster. If we're not delivering results, you're free to walk.</p>
+          <div class="faq-content px-6">
+            <p class="text-payra-gray leading-relaxed">We keep it simple. There are no long-term contracts or early termination fees. We earn your business every month by helping you collect faster. If we&rsquo;re not delivering results, you&rsquo;re free to walk.</p>
           </div>
         </div>
       </div>
@@ -494,24 +538,27 @@
   </section>
 
   <!-- Final CTA -->
-  <section class="py-24 bg-payra-dark text-white">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+  <section class="py-28 bg-payra-darker text-white relative overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-payra-cyan/5 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
       <div class="observe-animate" data-animate="fadeInUp">
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-6">Ready to get paid faster<br/>without paying a dime?</h2>
-        <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">Book a 15-minute demo. See how Payra automates your entire invoice-to-cash cycle &mdash; for $0.</p>
-        <a href="https://book.payra.com" class="cta-button animate-pulse-glow inline-flex items-center gap-3 px-10 py-5 bg-payra-cyan text-white text-lg font-bold rounded-xl shadow-lg shadow-cyan-500/30">
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight">Ready to get paid faster<br/>without paying a dime?</h2>
+        <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">Book a 15-minute demo. See how Payra automates your entire invoice-to-cash cycle &mdash; for $0.</p>
+        <a href="https://book.payra.com" class="cta-button animate-gentle-pulse inline-flex items-center gap-3 px-10 py-5 bg-payra-cyan text-white text-lg font-bold rounded-xl shadow-lg shadow-cyan-500/25">
           Book Your Free Demo
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
-        <p class="text-sm text-slate-500 mt-6">No credit card. No obligation. Just results.</p>
+        <p class="text-sm text-slate-500 mt-8">No credit card. No obligation. Just results.</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 bg-payra-dark border-t border-slate-800">
+  <footer class="py-8 bg-payra-darker border-t border-slate-800/60">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2.5">
         <svg width="24" height="24" viewBox="0 0 40 40" fill="none">
           <path d="M8 12L20 6L32 12V20L20 34L8 20V12Z" fill="#22b672"/>
           <path d="M14 16L22 12L28 16V20L18 28L14 24V16Z" fill="white"/>
@@ -529,8 +576,8 @@
   </footer>
 
   <!-- Sticky Bottom CTA (mobile) -->
-  <div class="sticky-cta fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-4 md:hidden">
-    <a href="https://book.payra.com" class="cta-button block w-full text-center px-6 py-3.5 bg-payra-cyan text-white font-bold rounded-xl">
+  <div class="sticky-cta fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/80 p-4 md:hidden">
+    <a href="https://book.payra.com" class="cta-button block w-full text-center px-6 py-3.5 bg-payra-cyan text-white font-bold rounded-xl shadow-lg shadow-cyan-200/30">
       Book a Demo &mdash; $0 to Get Started
     </a>
   </div>
@@ -550,7 +597,7 @@
           observer.unobserve(el);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
 
     document.querySelectorAll('.observe-animate').forEach(el => observer.observe(el));
 
@@ -574,15 +621,12 @@
 
     // Sticky CTA on mobile
     const stickyCta = document.querySelector('.sticky-cta');
-    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > 600) {
+      if (window.scrollY > 600) {
         stickyCta.classList.add('visible');
       } else {
         stickyCta.classList.remove('visible');
       }
-      lastScroll = currentScroll;
     });
   </script>
 </body>
